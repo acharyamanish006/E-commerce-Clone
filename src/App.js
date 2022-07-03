@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "@fontsource/poppins";
+import "./App.css"
+import { Navbar } from "./comopnent/navbar";
+import MainPage from "./comopnent/MainPage";
+import Footer from "./comopnent/Footer";
+import Shop from "./comopnent/Shop";
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Page404 from "./comopnent/Page404";
+import GraphicCard from "./comopnent/GraphicCard";
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter >
+        <Navbar />
+        <Routes>
+          <Route index path="/" element={<MainPage/>} />
+          <Route index path="/MainPage" element={<MainPage/>} />
+          <Route path="/Shop" element={<Shop name="NEW YEAR OFFER"/>} /> 
+          <Route path="/myWishList" element={<Page404/>} /> 
+          <Route path="/myCart" element={<Page404/>} /> 
+          <Route path="/productDetails" element={<GraphicCard/>} /> 
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
